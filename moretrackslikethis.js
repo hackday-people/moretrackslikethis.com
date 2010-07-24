@@ -5,7 +5,7 @@
 
 var spotRecom = (function(){
 
-    var MAX_TRACKS_TO_RETURN = 5;
+    var MAX_TRACKS_TO_RETURN = 10;
 
     var spotifyEls = [];  // a map of spotify queries to result elements
     var spotifyStr = '';  // a concatentation of spotify results
@@ -17,7 +17,7 @@ var spotRecom = (function(){
         $('#search').bind('click submit', function() {
             // validation
             if (!$('#artist').val() || !$('#track').val()) {
-                $('#results').html('<p>RTFM...</p> ');
+                $('#results').html('<p>Please fill in both track name and artist.</p> ');
             }
             
             // Start the search
@@ -82,12 +82,12 @@ var spotRecom = (function(){
     
     // process the data from lastfm
     var callbackLastFMData = function (data) {
-        console.log(data.query.results);
         if (data.query.results) {
             $('#results').empty();
             $('#results-table').empty();
             var $resultEl = $('#results-table');
             $.each(data.query.results.lfm, function(index) {
+                if (!this.similartracks) return;
                 var trackObj = this.similartracks.track[1];
                 var artist = trackObj.artist.name || "artist";
                 var track = trackObj.name || "track";
@@ -118,7 +118,6 @@ var spotRecom = (function(){
         spotifyEls[spotifyurl] = $el;
         var qry = "select%20track.href%20from%20xml%20where%20url%3D'" + encodeURIComponent(spotifyurl) + "'%20limit%201";
         var params = '&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=?';
-        console.log(qry)
         return $.ajax({
             url: url+qry+params,
             dataType: 'jsonp',
@@ -131,7 +130,6 @@ var spotRecom = (function(){
     
     // process the spotify result
     var callbackSpotifyData = function(data) {
-        console.log(data);
         spotifyCountdown--;
         if (data.query.results) {
             spotifyEls[data.query.diagnostics.url.content].html('<a href="' + data.query.results.tracks.track.href + '">' + data.query.results.tracks.track.href + '</a>');
@@ -175,11 +173,12 @@ var spotRecom = (function(){
     };
     // process the spotify lookup
     var callbackSpotifyLookup = function(data) {
-        console.log(data);
         if (data.query.results) {
             $('#track').val(data.query.results.track.name);
             $('#artist').val(data.query.results.track.artist.name);
             $('#search').click();
+        } else {
+            $('#results').html('<p>Sorry, that URL didn\'t yield any useful data.</p> ');
         }
     };
     
