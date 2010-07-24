@@ -30,6 +30,11 @@ var spotRecom = (function(){
             return false;
         });
         
+        // lookup button
+        $('#lookup').bind('click submit', function() {
+            getSpotifyLookup($('#spotifyurl').val());
+        });
+
         // just an example
         $('#example_track').bind('click', function(e) {
             $('#track').val('Hey');
@@ -48,6 +53,7 @@ var spotRecom = (function(){
         
         // put the cursor in the track box to get started
         $('#track').select();
+        
     });
     
     // prepare the lastfm url through yql
@@ -151,6 +157,32 @@ var spotRecom = (function(){
         $('#dragger').html(spotifyStr);
         $('#complete').fadeIn('slow');
     };
+
+
+    // Lookup spotify urls
+    var getSpotifyLookup = function(lookupurl) {
+        var url = 'http://query.yahooapis.com/v1/public/yql?q=';
+        var spotifyurl = "http://ws.spotify.com/lookup/1/?uri=" + encodeURIComponent(lookupurl);
+        var qry = "select%20artist.name,name%20from%20xml%20where%20url%3D'" + encodeURIComponent(spotifyurl) + "'%20limit%201";
+        var params = '&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=?';
+        return $.ajax({
+            url: url+qry+params,
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'spotRecom.callbackSpotifyLookup',
+            cache:true,
+        });
+    };
+    // process the spotify lookup
+    var callbackSpotifyLookup = function(data) {
+        console.log(data);
+        if (data.query.results) {
+            $('#track').val(data.query.results.track.name);
+            $('#artist').val(data.query.results.track.artist.name);
+            $('#search').click();
+        }
+    };
+    
     
     // return functions that can be called from the outside world
     // These are used by jsonp callbacks.
@@ -158,7 +190,8 @@ var spotRecom = (function(){
     // break caching.
     return {
         callbackLastFMData: callbackLastFMData,
-        callbackSpotifyData: callbackSpotifyData
+        callbackSpotifyData: callbackSpotifyData,
+        callbackSpotifyLookup: callbackSpotifyLookup
     }
     
 })();
