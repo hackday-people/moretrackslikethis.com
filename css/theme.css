@@ -81,6 +81,7 @@ HEADER {
     display: block;
     overflow: hidden;
     box-shadow: 5px 5px 10px 10px #000;
+    position: relative;
 }
 
 H1 {
@@ -89,9 +90,9 @@ H1 {
     padding-left: 150px;
     padding-top: 80px;  
     float: left;
-    /* text-shadow: 2px 2px 5px #000; */
-    
+ 
 }
+
 
 #intro {
     float: left;
@@ -106,6 +107,14 @@ H1 {
     margin: 1em 0;
 }
 
+
+#socialLinks {
+    background-color: #FFF;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    padding: 10px;
+}
 
 
 
@@ -142,6 +151,10 @@ H1 {
     clear: both;
 }
 
+#searchForm DIV P:first-child {
+    margin-bottom: 10px;
+}
+
 #searchForm DIV LABEL,
 #searchForm DIV INPUT
 {
@@ -156,6 +169,7 @@ H1 {
 #searchForm DIV INPUT {
     float: left;
     width: 460px;
+    border: none;
 }
 
 #searchForm INPUT {
