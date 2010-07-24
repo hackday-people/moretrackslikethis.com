@@ -31,16 +31,21 @@
     </header>
     
     <!-- Search -->
-    <section id="searchBox">
+    <section class="round tapeBox">
+        <header class="font_prater">Side A. Insert track</header>
         <form id="searchForm" class="font_prater_sans">
-            <p id="trackField">
-                <label for="trackName">Track Name</label>
-                <input type="text" name="trackName" id="trackName" class="font_prater_sans" />
-            </p>
-            <p id="artistField">
-                <label for="artistName">Artist Name</label>
-                <input type="text" name="artistName" id="artistName" class="font_prater_sans"/>
-           </p>
+            <div class="round">
+                <p>
+                    <label for="trackName">Track Name</label>
+                    <input type="text" name="trackName" id="trackName" class="font_prater_sans" />
+                </p>
+                
+                <p>
+                    <label for="artistName">Artist Name</label>
+                    <input type="text" name="artistName" id="artistName" class="font_prater_sans"/>
+                </p>
+            </div>
+            
            <p id="searchField">
                 <input type="submit" id="submit" value="Search" class="font_prater_sans" />
             </p>
@@ -48,7 +53,8 @@
     </section>
     
     <!-- Results -->
-    <section id="resultsContainer">
+    <section class="tapeBox round">
+         <header class="font_prater">Side B. Track list</header>
         <ul id="resultsList">
             <li>
                 <strong>Hey</strong> by <strong>Pixies</strong>

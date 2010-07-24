@@ -53,7 +53,7 @@ ol, ul {
 /* HTML Styles
 --------------------------------------------------------------------------*/
 BODY {
-    background-color: #9B0;
+    background-color: #FFF;
     font-family: arial, verdana, sans-serif;
 }
 
@@ -61,7 +61,15 @@ BODY {
 --------------------------------------------------------------------------*/
 #wrapper {
     width: 960px;
-    margin: 0 auto;
+    margin: 20px auto;
+    background-color: #67b801;
+    -moz-box-shadow: 0 0 20px 0 #666;
+    -webkit-box-shadow: 0 0 20px 0 #666;
+    box-shadow: 0 0 10px 10px #666;
+    
+    -moz-border-radius: 10px; /* For FireFox */
+    -webkit-border-radius: 10px; /* For Safari/Chrome */
+    border-radius: 10px; /* For when the standard gets fully supported */
 }
 
 
@@ -104,43 +112,82 @@ H1 {
 
 /* Search Box
 --------------------------------------------------------------------------*/
-#searchBox {
+.tapeBox {
     display: block;
     overflow: hidden;
-    margin-top: 20px;
+    background-color: #FFF;
+    margin: 20px;
+    padding: 20px;
 }
 
-#searchForm LABEL,
-#searchForm INPUT {
-    font-size: 1.6em;
-}
-#searchForm LABEL {
-    display: block;
+.tapeBox HEADER {
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
-#searchForm INPUT {
-   font-size: 2em;
-   padding: .2em .4em;
+#searchForm {
+    overflow: hidden;
+    position: relative;
 }
 
-
-#trackField,
-#artistField {
+#searchForm DIV {
+    background-color: #67b801;
+    padding: 10px;
     float: left;
-    width: 370px;
+    width: 70%;    
 }
 
-#trackField {
-    margin-right: 10px;
+#searchForm DIV P {
+    overflow: hidden;
+    clear: both;
+}
+
+#searchForm DIV LABEL,
+#searchForm DIV INPUT
+{
+    font-size: 1.4em;
+}
+
+#searchForm DIV LABEL {
+    float: left;
+    width: 120px;
+}
+
+#searchForm DIV INPUT {
+    float: left;
+    width: 460px;
+}
+
+#searchForm INPUT {
+    padding: .2em .4em;
+    -moz-border-radius: 10px; /* For FireFox */
+    -webkit-border-radius: 10px; /* For Safari/Chrome */
+    border-radius: 10px; /* For when the standard gets fully supported */
 }
 
 #searchForm INPUT#submit {
     float: left;
-   font-size: 3em;
-   padding: .1em .9em;
-   -moz-border-radius: 10px; /* For FireFox */
-    -webkit-border-radius: 10px; /* For Safari/Chrome */
-    border-radius: 10px; /* For when the standard gets fully supported */
+    font-size: 2.8em;
+    padding: 0 .9em;
+    cursor: pointer;
+    
+    border: 3px solid #C40;
+    
+    background-image: -webkit-gradient(
+        linear, left bottom,
+        left top,
+        color-stop(0, rgb(255,119,0)),
+        color-stop(1, rgb(255,188,20))
+    );
+
+    background-image:-moz-linear-gradient(
+        center bottom,
+        rgb(255,119,0) 0%,
+        rgb(255,188,20) 100%
+    );
+    
+    height: 110px;
+    margin-left: 10px;
 }
 
 
@@ -158,8 +205,9 @@ H1 {
 /* Footer
 --------------------------------------------------------------------------*/
 FOOTER {
-    background-color: #F29;
-    display: block;
+   
+    padding: 1em;
+    text-align: center;
 }
 
 
@@ -170,8 +218,8 @@ FOOTER {
 /* Misc.
 --------------------------------------------------------------------------*/
 .round {
-    -moz-border-radius: 20px; /* For FireFox */
-    -webkit-border-radius: 20px; /* For Safari/Chrome */
-    border-radius: 20px; /* For when the standard gets fully supported */
+    -moz-border-radius: 10px; /* For FireFox */
+    -webkit-border-radius: 10px; /* For Safari/Chrome */
+    border-radius: 10px; /* For when the standard gets fully supported */
 }
 
