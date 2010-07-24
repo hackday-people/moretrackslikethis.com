@@ -213,6 +213,10 @@ H1 {
 }
 
 
+#resultsList li:nth-child(odd) {
+    background-color: red;
+}
+
 
 
 
@@ -222,8 +226,22 @@ FOOTER {
    
     padding: 1em;
     text-align: center;
+   
+    
 }
 
+FOOTER P {
+    font-size: 0.8em;
+    margin: 0.5em;
+}
+
+FOOTER A:link,
+FOOTER A:visited,
+FOOTER A:hover,
+FOOTER A:active {
+    color: #FFF;
+    font-weight: bold;
+}
 
 
 
