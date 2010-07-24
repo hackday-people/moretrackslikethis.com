@@ -63,7 +63,8 @@ var moreTracksLikeThis = (function(){
             setTimeout(function() {
                 getLastFMSimilarData($('#track').val(), $('#artist').val());
             }, 1000);
-            $('#results').hide();
+            $('#complete').hide();
+            $('#results').show();
             return false;
         });
         
@@ -85,7 +86,7 @@ var moreTracksLikeThis = (function(){
         });
         
         // hide the results box
-        $('#results').hide();
+        $('#complete').hide();
         
         // handle submit actions
         $('#searchForm').submit(function() {
@@ -210,7 +211,7 @@ var moreTracksLikeThis = (function(){
             );
         $('#results-textarea').val(spotifyStr);
         $('#dragger').html(spotifyStr);
-        $('#results').fadeIn('slow');
+        $('#complete').fadeIn('slow');
     };
 
 
