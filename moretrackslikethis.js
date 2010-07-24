@@ -4,10 +4,22 @@
 */
 
 var spotRecom = (function(){
+
     var MAX_TRACKS_TO_RETURN = 5;
 
+    var spotifyEls = [];  // a map of spotify queries to result elements
+    var spotifyStr = '';  // a concatentation of spotify results
+    var spotifyCountdown = 0;  // a counter to kick off the results display when all results are in
+
     $(document).ready(function(){
+
+        // search button
         $('#search').bind('click submit', function() {
+            // validation
+            if (!$('#artist').val() || !$('#track').val()) {
+                $('#results').html('<p>RTFM...</p> ');
+            }
+            
             // Start the search
             $('#results').empty();
             $('#results').html('<p>Searching now...</p> ');
@@ -15,22 +27,30 @@ var spotRecom = (function(){
                 getLastFMSimilarData($('#track').val(), $('#artist').val());
             }, 1000);
             $('#complete').hide();
-//            spotRecom.search();
             return false;
         });
         
+        // just an example
         $('#example_track').bind('click', function(e) {
-            getLastFMSimilarData('Hey', 'Pixies');
-//            spotRecom.search('Hey', 'Pixies');
+            $('#track').val('Hey');
+            $('#artist').val('Pixies');
+            $('#search').click();
             return false;
         });
-        $('#complete').hide();
+        
+        // select the text area contents if clicked, to make cutting+pasting easier
         $('#results-textarea').click(function() {
             this.select();
         });
         
+        // hide the results box
+        $('#complete').hide();
+        
+        // put the cursor in the track box to get started
+        $('#track').select();
     });
     
+    // prepare the lastfm url through yql
     var getLastFMSimilarURL = function(track, artist) {
         
         var track = $.trim(track);
@@ -41,7 +61,9 @@ var spotRecom = (function(){
         var params = '&format=json&_maxage=3600000&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=?';
 
         return url+qry+params;
-    }
+    };
+    
+    // look up the track and artist in lastfm's similar search
     var getLastFMSimilarData = function(track, artist) {
         return $.ajax({
             url: getLastFMSimilarURL(track, artist),
@@ -51,6 +73,8 @@ var spotRecom = (function(){
             cache:true,
         });
     };
+    
+    // process the data from lastfm
     var callbackLastFMData = function (data) {
         console.log(data.query.results);
         if (data.query.results) {
@@ -80,9 +104,8 @@ var spotRecom = (function(){
             $('#results').html('<p>Sorry, there was no results for that search. Try something else.</p>');
         }
     };
-    var spotifyEls = [];
-    var spotifyStr = '';
-    var spotifyCountdown = 0;
+    
+    // Lookup tracks from Spotify metadata api
     var getSpotifyLinks = function($el, artist, track) {
         var url = 'http://query.yahooapis.com/v1/public/yql?q=';
         var spotifyurl = "http://ws.spotify.com/search/1/track?q=" + encodeURIComponent(artist) + "%20" + encodeURIComponent(track);
@@ -99,6 +122,8 @@ var spotRecom = (function(){
         });
         
     };
+    
+    // process the spotify result
     var callbackSpotifyData = function(data) {
         console.log(data);
         spotifyCountdown--;
@@ -110,6 +135,8 @@ var spotRecom = (function(){
         }
         if ( spotifyCountdown<1 ) spotifyComplete();
     };
+    
+    // when all results are in, display the 'complete' box
     var spotifyComplete = function() {
         swfobject.embedSWF(
             "clippy.swf", "clippy", 
@@ -125,6 +152,10 @@ var spotRecom = (function(){
         $('#complete').fadeIn('slow');
     };
     
+    // return functions that can be called from the outside world
+    // These are used by jsonp callbacks.
+    // We can't use closure references through jquery because the varying callback function names
+    // break caching.
     return {
         callbackLastFMData: callbackLastFMData,
         callbackSpotifyData: callbackSpotifyData
