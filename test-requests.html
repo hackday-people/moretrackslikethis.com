@@ -11,6 +11,7 @@
     <meta name="robots" content="index, follow" />
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="javascript/swfobject/swfobject.js"></script> 
     <script src="moretrackslikethis.js" type="text/javascript"></script>
     
     </head>
@@ -42,7 +43,56 @@
         <div id="results">
             Results will appear here.
         </div>
-            
+        
+        <table id="results-table">
+        </table>
+
+        <div id="complete">        
+
+            <div id="clippy"></div>       
+
+            <textarea id="results-textarea">
+            </textarea>
+    
+            <style>
+            ::selection {
+            }
+            #dragpic {
+                background:url(http://spotibot.com/_css/img/DRAG_ICON.png);
+                width: 200px;
+            }
+            #dragger {
+                width: 200px;
+                height: 105px;
+                cursor: pointer;
+                overflow: hidden;
+                opacity: 0.1;
+                font-size:999px;
+            }
+            </style>
+            <div id="dragpic">
+                <div id="dragger" title="Drag into Spotify" style="" onmouseover="selectText();">
+                    bananas
+                </div>
+            </div>
+            <script>
+                function selectText() {
+                    var div;
+                    if (document.selection) {
+                        div = document.body.createTextRange();
+                        div.moveToElementText($("#dragger")[0]);
+                        div.select();
+                    } else {
+                        div = document.createRange();
+                        div.setStartBefore($("#dragger")[0]);
+                        div.setEndAfter($("#dragger")[0]) ;
+                        window.getSelection().addRange(div);
+                    }
+                } 
+            </script>
+
+        </div>
+           
         </div><!-- container. end -->
         
                 
