@@ -32,7 +32,7 @@
         </noscript>
         
         <p>
-        <form onsubmit="$('#search').click();return false">
+        <form id="searchForm">
             <label for="track">Track name</label>
             <input type="text" name="track" id="track" value="Hey" />
             
@@ -42,21 +42,20 @@
             <input type="submit" id="search" value="Search" />
 
             <hr>
-            <label for="spotifyurl">Spotify URL</label>
-            <input type="text" name="spotifyurl" id="spotifyurl" value="spotify:track:2mzuAU3JdBAYIdpFb1znOR" />
+            <label for="lookup">Spotify URL</label>
+            <input type="text" name="lookup" id="lookup" value="" />
 
-            <input type="submit" id="lookup" value="Lookup" />
         </form>
         </p>
         
-        <div id="results">
+        <div id="messages">
             Results will appear here.
         </div>
         
         <table id="results-table">
         </table>
 
-        <div id="complete">        
+        <div id="results">        
 
             <div id="clippy"></div>       
 
@@ -78,25 +77,10 @@
             }
             </style>
             <div id="dragpic">
-                <div id="dragger" title="Drag into Spotify" style="" onmouseover="selectText();">
+                <div id="dragger" title="Drag into Spotify">
                     bananas
                 </div>
             </div>
-            <script>
-                function selectText() {
-                    var div;
-                    if (document.selection) {
-                        div = document.body.createTextRange();
-                        div.moveToElementText($("#dragger")[0]);
-                        div.select();
-                    } else {
-                        div = document.createRange();
-                        div.setStartBefore($("#dragger")[0]);
-                        div.setEndAfter($("#dragger")[0]) ;
-                        window.getSelection().addRange(div);
-                    }
-                } 
-            </script>
 
         </div>
            

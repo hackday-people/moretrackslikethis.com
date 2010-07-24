@@ -45,24 +45,30 @@ var moreTracksLikeThis = (function(){
 
         // search button
         $('#search').bind('click submit', function() {
+            
+            // spotify uri lookup if necessary
+            if ($('#lookup').val()!='') {
+                getSpotifyLookup($('#lookup').val());
+                return false;
+            }
+
             // validation
             if (!$('#artist').val() || !$('#track').val()) {
-                $('#results').html('<p>Please fill in both track name and artist.</p> ');
+                $('#messages').html('<p>Please fill in both track name and artist.</p> ');
             }
             
             // Start the search
-            $('#results').empty();
-            $('#results').html('<p>Searching now...</p> ');
+            $('#messages').empty();
+            $('#messages').html('<p>Searching now...</p> ');
             setTimeout(function() {
                 getLastFMSimilarData($('#track').val(), $('#artist').val());
             }, 1000);
-            $('#complete').hide();
+            $('#results').hide();
             return false;
         });
         
         // lookup button
         $('#lookup').bind('click submit', function() {
-            getSpotifyLookup($('#spotifyurl').val());
         });
 
         // just an example
@@ -79,7 +85,28 @@ var moreTracksLikeThis = (function(){
         });
         
         // hide the results box
-        $('#complete').hide();
+        $('#results').hide();
+        
+        // handle submit actions
+        $('#searchForm').submit(function() {
+            $('#search').click();
+            return false;
+        });
+        
+        // do the weird text-select-drag action
+        $('#dragger').mouseover(function() {
+            var div;
+            if (document.selection) {
+                div = document.body.createTextRange();
+                div.moveToElementText($("#dragger")[0]);
+                div.select();
+            } else {
+                div = document.createRange();
+                div.setStartBefore($("#dragger")[0]);
+                div.setEndAfter($("#dragger")[0]) ;
+                window.getSelection().addRange(div);
+            }
+        });
         
         // put the cursor in the track box to get started
         $('#track').select();
@@ -113,7 +140,7 @@ var moreTracksLikeThis = (function(){
     // process the data from lastfm
     var callbackLastFMData = function (data) {
         if (data.query.results) {
-            $('#results').empty();
+            $('#messages').empty();
             $('#results-table').empty();
             var $resultEl = $('#results-table');
             $.each(data.query.results.lfm, function(index) {
@@ -137,7 +164,7 @@ var moreTracksLikeThis = (function(){
             });
             spotifyCountdown = data.query.results.lfm.length;
         } else {
-            $('#results').html('<p>Sorry, there was no results for that search. Try something else.</p>');
+            $('#messages').html('<p>Sorry, there was no results for that search. Try something else.</p>');
         }
     };
     
@@ -183,7 +210,7 @@ var moreTracksLikeThis = (function(){
             );
         $('#results-textarea').val(spotifyStr);
         $('#dragger').html(spotifyStr);
-        $('#complete').fadeIn('slow');
+        $('#results').fadeIn('slow');
     };
 
 
@@ -206,9 +233,10 @@ var moreTracksLikeThis = (function(){
         if (data.query.results) {
             $('#track').val(data.query.results.track.name);
             $('#artist').val(data.query.results.track.artist.name);
+            $('#lookup').val('');
             $('#search').click();
         } else {
-            $('#results').html('<p>Sorry, that URL didn\'t yield any useful data.</p> ');
+            $('#messages').html('<p>Sorry, that URL didn\'t yield any useful data.</p> ');
         }
     };
     
