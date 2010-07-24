@@ -142,16 +142,15 @@ H1 {
 #searchForm DIV {
     background-color: #67b801;
     padding: 10px;
+    padding-bottom: 0;
     float: left;
     width: 70%;    
+    margin-bottom: 10px;
 }
 
 #searchForm DIV P {
     overflow: hidden;
     clear: both;
-}
-
-#searchForm DIV P:first-child {
     margin-bottom: 10px;
 }
 
@@ -180,7 +179,8 @@ H1 {
 }
 
 #searchForm INPUT#submit {
-    float: left;
+    position: absolute;
+    right: 30px;
     font-size: 2.8em;
     padding: 0 .9em;
     cursor: pointer;
@@ -200,7 +200,7 @@ H1 {
         rgb(255,188,20) 100%
     );
     
-    height: 110px;
+    height: 190px;
     margin-left: 10px;
 }
 
@@ -213,6 +213,10 @@ H1 {
 }
 
 
+#resultsList li:nth-child(odd) {
+    background-color: red;
+}
+
 
 
 
@@ -222,8 +226,22 @@ FOOTER {
    
     padding: 1em;
     text-align: center;
+   
+    
 }
 
+FOOTER P {
+    font-size: 0.8em;
+    margin: 0.5em;
+}
+
+FOOTER A:link,
+FOOTER A:visited,
+FOOTER A:hover,
+FOOTER A:active {
+    color: #FFF;
+    font-weight: bold;
+}
 
 
 
