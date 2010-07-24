@@ -53,11 +53,9 @@ ol, ul {
 /* HTML Styles
 --------------------------------------------------------------------------*/
 BODY {
-    background-color: #FCC;
+    background-color: #9B0;
+    font-family: arial, verdana, sans-serif;
 }
-
-
-
 
 /* Structure
 --------------------------------------------------------------------------*/
@@ -72,7 +70,32 @@ BODY {
 /* Header
 --------------------------------------------------------------------------*/
 HEADER {
-    background-color: #0CF;
+    display: block;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px 10px #000;
+}
+
+H1 {
+    font-size: 3.5em;
+    color: #000;
+    padding-left: 150px;
+    padding-top: 80px;  
+    float: left;
+    /* text-shadow: 2px 2px 5px #000; */
+    
+}
+
+#intro {
+    float: left;
+    width: 300px;
+    font-size: 0.9em;
+    margin-top: 80px;
+    margin-left: 50px;  
+    line-height: 1.4em;
+}
+
+#intro P {
+    margin: 1em 0;
 }
 
 
@@ -82,16 +105,50 @@ HEADER {
 /* Search Box
 --------------------------------------------------------------------------*/
 #searchBox {
-    background-color: #F4F;
+    display: block;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+#searchForm LABEL,
+#searchForm INPUT {
+    font-size: 1.6em;
+}
+#searchForm LABEL {
+    display: block;
+}
+
+#searchForm INPUT {
+   font-size: 2em;
+   padding: .2em .4em;
 }
 
 
+#trackField,
+#artistField {
+    float: left;
+    width: 370px;
+}
+
+#trackField {
+    margin-right: 10px;
+}
+
+#searchForm INPUT#submit {
+    float: left;
+   font-size: 3em;
+   padding: .1em .9em;
+   -moz-border-radius: 10px; /* For FireFox */
+    -webkit-border-radius: 10px; /* For Safari/Chrome */
+    border-radius: 10px; /* For when the standard gets fully supported */
+}
 
 
 /* Results
 --------------------------------------------------------------------------*/
 #resultsContainer {
     background-color: #98C;
+    display: block;
 }
 
 
@@ -102,6 +159,7 @@ HEADER {
 --------------------------------------------------------------------------*/
 FOOTER {
     background-color: #F29;
+    display: block;
 }
 
 
@@ -111,4 +169,9 @@ FOOTER {
 
 /* Misc.
 --------------------------------------------------------------------------*/
+.round {
+    -moz-border-radius: 20px; /* For FireFox */
+    -webkit-border-radius: 20px; /* For Safari/Chrome */
+    border-radius: 20px; /* For when the standard gets fully supported */
+}
 

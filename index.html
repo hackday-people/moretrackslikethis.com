@@ -19,20 +19,30 @@
     
     <!-- Header -->
     <header>
-        <h1>More Tracks Like This</h1>
+        <h1>More <br />tracks <br />like this.com</h1>
+        
+        <section id="intro" class="font_prater_sans">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+            commodo ligula eget dolor. Aenean massa.</p>
+            <p> Cum sociis natoque penatibus et magnis dis parturient montes, 
+            ascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+            eu, pretium quis, sem. Nulla consequat. </p> 
+        </section>
     </header>
     
     <!-- Search -->
     <section id="searchBox">
-        <form id="searchForm">
-            <p>
+        <form id="searchForm" class="font_prater_sans">
+            <p id="trackField">
                 <label for="trackName">Track Name</label>
-                <input type="text" name="trackName" id="trackName" />
-                
+                <input type="text" name="trackName" id="trackName" class="font_prater_sans" />
+            </p>
+            <p id="artistField">
                 <label for="artistName">Artist Name</label>
-                <input type="text" name="artistName" id="artistName" />
-                
-                <input type="submit" id="submit" value="Search" />
+                <input type="text" name="artistName" id="artistName" class="font_prater_sans"/>
+           </p>
+           <p id="searchField">
+                <input type="submit" id="submit" value="Search" class="font_prater_sans" />
             </p>
         </form>
     </section>
