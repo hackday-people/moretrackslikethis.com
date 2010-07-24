@@ -32,6 +32,7 @@
         </noscript>
         
         <p>
+        <form onsubmit="$('#search').click();return false">
             <label for="track">Track name</label>
             <input type="text" name="track" id="track" value="Hey" />
             
@@ -45,6 +46,7 @@
             <input type="text" name="spotifyurl" id="spotifyurl" value="spotify:track:2mzuAU3JdBAYIdpFb1znOR" />
 
             <input type="submit" id="lookup" value="Lookup" />
+        </form>
         </p>
         
         <div id="results">
