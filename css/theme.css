@@ -1,0 +1,111 @@
+/*
+    Title:  More Tracks Like This CSS Theme
+    File. theme.css
+    
+    Site: http://moretrackslikethis.com/
+    Src: http://github.com/hackday-people/moretrackslikethis.com
+    
+    Created: Sat 24 Jul 2010 17:24:46 BST 
+    
+ Copyright (c) 2010 Kenneth Kufluk, Jon Griffiths and Andrew Mason
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ 
+*/
+
+
+/* Reset CSS */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, code, em, font, img, q, strike, strong, sub, sup, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+
+
+/* HTML Styles
+--------------------------------------------------------------------------*/
+BODY {
+    background-color: #FCC;
+}
+
+
+
+
+/* Structure
+--------------------------------------------------------------------------*/
+
+
+
+
+
+/* Header
+--------------------------------------------------------------------------*/
+HEADER {
+    background-color: #0CF;
+}
+
+
+
+
+
+/* Search Box
+--------------------------------------------------------------------------*/
+#searchBox {
+    background-color: #F4F;
+}
+
+
+
+
+/* Results
+--------------------------------------------------------------------------*/
+#resultsContainer {
+    background-color: #98C;
+}
+
+
+
+
+
+/* Footer
+--------------------------------------------------------------------------*/
+FOOTER {
+    background-color: #F29;
+}
+
+
+
+
+
+
+/* Misc.
+--------------------------------------------------------------------------*/
+
