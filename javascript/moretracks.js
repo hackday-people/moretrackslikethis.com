@@ -61,6 +61,10 @@ var moreTracksLikeThis = (function(){
             $('#messages').empty();
             $('#messages').show();
             $('#messages').html('<p>Searching now...</p> ');
+            
+            $('#results').hide();
+            
+            
             setTimeout(function() {
                 getLastFMSimilarData($('#track').val(), $('#artist').val());
             }, 1000);
@@ -144,7 +148,12 @@ var moreTracksLikeThis = (function(){
     var callbackLastFMData = function (data) {
         if (data.query.results) {
             $('#messages').empty();
-            $('#messages').hide();
+            $('#messages').hide('slow');
+            $('#complete').hide();
+            
+            $('#buildingMsg').text('Building playlist...');
+            $('#buildingMsg').show('slow');
+            
             $('#resultsList').empty();
             var $resultEl = $('#resultsList');
             $.each(data.query.results.lfm, function(index) {
@@ -205,16 +214,19 @@ var moreTracksLikeThis = (function(){
     var spotifyComplete = function() {
         swfobject.embedSWF(
             "clippy.swf", "clippy", 
-            "110", "14", 
+            "110", "19", 
             '9.0.0',
             'javascript/swfobject/expressInstall.swf', 
             {text: spotifyStr},
             {quality : "high", allowScriptAccess:"always", wmode:"transparent"},
             {id: "clippy", name: "clippy"}
             );
+        $('#buildingMsg').hide('slow');
+        
         $('#results-textarea').val(spotifyStr);
         $('#dragger').html(spotifyStr);
-        $('#complete').fadeIn('slow');
+        $('#complete').show('slow');
+        //
     };
 
 

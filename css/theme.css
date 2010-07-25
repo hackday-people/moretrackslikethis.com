@@ -114,6 +114,7 @@ H1 {
     bottom: 0;
     right: 20px;
     padding: 10px;
+    width: 210px;
 }
 
 
@@ -125,8 +126,8 @@ H1 {
     display: block;
     overflow: hidden;
     background-color: #FFF;
-    margin: 20px;
-    padding: 20px;
+    margin: 10px;
+    padding: 10px 10px 0 10px;
 }
 
 .tapeBox HEADER {
@@ -206,10 +207,10 @@ H1 {
 
 
 #messages {
-    background-color: #FFF;
-    padding: 20px;
+    background-color: #F92;
+    padding: 10px;
     text-align: center;
-    margin: 20px;
+    margin: 10px;
     display: none;
 }
 
@@ -221,6 +222,8 @@ H1 {
     width: 550px;
     float: left;
     overflow: hidden;
+    margin: 0 0 0 10px;
+    padding: 10px;
 }
 
 
@@ -266,10 +269,28 @@ H1 {
 
 
 
-#complete {
-    float: left;
+#complete,
+#buildingMsg {
+    float: right;
+    background-color: #FFF;
+    padding: 10px;
+    display: none;
+    margin-right: 10px;
+    width: 340px;
+    text-align: center;
+    position: relative;
 }
 
+#dragpic {
+    width: 100%;
+    display: block;
+    background: red;
+}
+
+#results-textarea {
+    width: 100%;
+    height: 70px;
+}
 
 
 /* Footer
@@ -278,6 +299,7 @@ FOOTER {
    clear: both;
     padding: 1em;
     text-align: center;
+    display: block;
    
     
 }
