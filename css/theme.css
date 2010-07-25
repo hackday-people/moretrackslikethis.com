@@ -228,14 +228,17 @@ H1 {
 
 
 #resultsList li:nth-child(odd) {
-    background-color: #EEE;
+    background-color: #CCC;
 }
 
 #resultsList LI {
     position: relative;
     overflow: hidden;
     clear: all;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    line-height: 1.3em;
+    padding: 5px;
 }
 
 #resultsList LI A {
@@ -244,10 +247,17 @@ H1 {
     padding: 2px 4px;
     display: block;
     float: left;
-    margin-top: 3px;
+    margin-top: 2px;
     -moz-border-radius: 5px; /* For FireFox */
     -webkit-border-radius: 5px; /* For Safari/Chrome */
     border-radius: 5px; /* For when the standard gets fully supported */
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+#resultsList LI A.delete {
+    margin-left: 10px;
+    background-color: #C00;
 }
 
 #resultsList LI SPAN.overlay {
@@ -255,9 +265,22 @@ H1 {
 	height:80px;
 	display: block;
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 5px;
+	left: 5px;
 	background: transparent url(../images/vinyl.png) left top no-repeat;
+}
+
+#resultsList LI SPAN STRONG {
+    padding: 2px 4px;
+    display: block;
+    float: left;
+    margin-top: 2px;
+    background-color: #FF9;
+    -moz-border-radius: 5px; /* For FireFox */
+    -webkit-border-radius: 5px; /* For Safari/Chrome */
+    border-radius: 5px; /* For when the standard gets fully supported */
+    font-weight: normal;
+    font-size: 0.9em;
 }
 
 #resultsList LI IMG {
