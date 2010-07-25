@@ -59,6 +59,7 @@ var moreTracksLikeThis = (function(){
             
             // Start the search
             $('#messages').empty();
+            $('#messages').show();
             $('#messages').html('<p>Searching now...</p> ');
             setTimeout(function() {
                 getLastFMSimilarData($('#track').val(), $('#artist').val());
@@ -142,20 +143,21 @@ var moreTracksLikeThis = (function(){
     var callbackLastFMData = function (data) {
         if (data.query.results) {
             $('#messages').empty();
-            $('#results-table').empty();
-            var $resultEl = $('#results-table');
+            $('#messages').hide();
+            $('#resultsList').empty();
+            var $resultEl = $('#resultsList');
             $.each(data.query.results.lfm, function(index) {
                 if (!this.similartracks) return;
                 var trackObj = this.similartracks.track[1];
                 var artist = trackObj.artist.name || "artist";
                 var track = trackObj.name || "track";
 
-                var $rowEl = $('<tr></tr>');
-                $rowEl.append($('<td><img src="'+(trackObj.image && trackObj.image[trackObj.image.length-1].content)+ '"/></td>'));
-                $rowEl.append($('<td>'+ artist +'</td>'));
-                $rowEl.append($('<td>'+ track +'</td>'));
+                var $rowEl = $('<li class="round"></li>');
+                $rowEl.append($('<img src="'+(trackObj.image && trackObj.image[trackObj.image.length-1].content)+ '"/><span class="overlay"></span>'));
+                $rowEl.append(track + '<br />');
+                $rowEl.append(artist + '<br />');
 
-                var $spotiLinkEl = $('<td></td>');
+                var $spotiLinkEl = $('<span class="link"></span>');
                 $rowEl.append($spotiLinkEl);
                 
                 $resultEl.append($rowEl);
