@@ -66,6 +66,7 @@ var moreTracksLikeThis = (function(){
             }, 1000);
             $('#complete').hide();
             $('#results').show();
+            $('html,body').animate({scrollTop: $('#results').offset().top}, 900);
             return false;
         });
         
