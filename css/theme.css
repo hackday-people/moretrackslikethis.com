@@ -178,7 +178,7 @@ H1 {
     border-radius: 10px; /* For when the standard gets fully supported */
 }
 
-#searchForm INPUT#submit {
+#searchForm INPUT#search {
     position: absolute;
     right: 30px;
     font-size: 2.8em;
@@ -205,25 +205,77 @@ H1 {
 }
 
 
+#messages {
+    background-color: #FFF;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+    display: none;
+}
+
 /* Results
 --------------------------------------------------------------------------*/
-#resultsContainer {
-    background-color: #98C;
+#results {
+    background-color: #FFF;
     display: block;
+    width: 550px;
+    float: left;
+    overflow: hidden;
 }
 
 
 #resultsList li:nth-child(odd) {
-    background-color: red;
+    background-color: #EEE;
 }
 
+#resultsList LI {
+    position: relative;
+    overflow: hidden;
+    clear: all;
+    margin-bottom: 5px;
+}
+
+#resultsList LI A {
+    color: #FFF;
+    background-color: #44F;
+    padding: 2px 4px;
+    display: block;
+    float: left;
+    margin-top: 3px;
+    -moz-border-radius: 5px; /* For FireFox */
+    -webkit-border-radius: 5px; /* For Safari/Chrome */
+    border-radius: 5px; /* For when the standard gets fully supported */
+}
+
+#resultsList LI SPAN.overlay {
+    width:98px;
+	height:80px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: transparent url(../images/vinyl.png) left top no-repeat;
+}
+
+#resultsList LI IMG {
+    width: 74px;
+    height: 72px;
+    float: left;
+    margin-right: 30px;
+}
+
+
+
+#complete {
+    float: left;
+}
 
 
 
 /* Footer
 --------------------------------------------------------------------------*/
 FOOTER {
-   
+   clear: both;
     padding: 1em;
     text-align: center;
    
