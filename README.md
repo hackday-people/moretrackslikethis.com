@@ -1,4 +1,4 @@
-#More Tracks Like This - A Spotify Song Recommendation Engine
+#[More Tracks Like This](http://moretrackslikethis.com/) - A Spotify Song Recommendation Engine
 
 Get more Spotify music recommendations, based on your favourite tracks.
 
