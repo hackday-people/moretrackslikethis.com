@@ -362,8 +362,8 @@ FOOTER A:active {
 
 #tapeEnd {
     height: 518px;
-    background: transparent url(../images/tapefooter.png) left top no-repeat;
-    margin: -30px 0 0 -8px;
+    background: transparent url(../images/tapefooter.png) center top no-repeat;
+    margin: -30px 0 0 0;
 }
 
 
