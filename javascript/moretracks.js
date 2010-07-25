@@ -38,7 +38,6 @@ var moreTracksLikeThis = (function(){
     var MAX_TRACKS_TO_RETURN = 10;
 
     var spotifyEls = [];  // a map of spotify queries to result elements
-    var spotifyStr = '';  // a concatentation of spotify results
     var spotifyCountdown = 0;  // a counter to kick off the results display when all results are in
 
     $(document).ready(function(){
@@ -101,7 +100,7 @@ var moreTracksLikeThis = (function(){
         });
         
         // do the weird text-select-drag action
-        $('#dragger').mouseover(function() {
+        var selectDraggerText = function() {
             var div;
             if (document.selection) {
                 div = document.body.createTextRange();
@@ -113,6 +112,14 @@ var moreTracksLikeThis = (function(){
                 div.setEndAfter($("#dragger")[0]) ;
                 window.getSelection().addRange(div);
             }
+        };
+        $('#dragger').mouseover(selectDraggerText);
+        $('#dragger').mousedown(function() {
+            $(this).css({'opacity':'1'});
+            $(this).animate({'opacity':'0'}, 1000);
+        });
+        $('#dragger').mouseleave(function() {
+            $(this).css({'opacity':'0'});
         });
         
         // put the cursor in the track box to get started
@@ -169,7 +176,16 @@ var moreTracksLikeThis = (function(){
 
                 var $spotiLinkEl = $('<span class="link"></span>');
                 $rowEl.append($spotiLinkEl);
+
+                var $deleteEl = $('<a href="#" class="delete">Delete</a>');
+                $deleteEl.click(function() {
+                    $rowEl.remove();
+                    spotifyComplete();
+                    return false;
+                });
+                $rowEl.append($deleteEl);
                 
+
                 $resultEl.append($rowEl);
                 spotifyTimeout = setTimeout(function() {
                     getSpotifyLinks($spotiLinkEl, artist, track);
@@ -201,14 +217,27 @@ var moreTracksLikeThis = (function(){
     // process the spotify result
     var callbackSpotifyData = function(data) {
         spotifyCountdown--;
+        var $el = spotifyEls[data.query.diagnostics.url.content];
+        var href = '';
         if (data.query.results) {
-            spotifyEls[data.query.diagnostics.url.content].html('<a href="' + data.query.results.tracks.track.href + '">' + data.query.results.tracks.track.href + '</a>');
-            spotifyStr += '\n' + data.query.results.tracks.track.href;
+            href = data.query.results.tracks.track.href;
+            $el.html('<a href="' + href + '">' + href + '</a>');
         } else {
-            spotifyEls[data.query.diagnostics.url.content].html('Couldn\'t find track');
+            $el.html('Couldn\'t find track');
         }
+
         if ( spotifyCountdown<1 ) spotifyComplete();
     };
+    
+    // process the spotify result
+    var getSpotifyStr = function() {
+        var str = '';
+        $('.link a').each(function() {
+            str += '\n' + this.href;
+        });
+        return str;
+    };
+    
     
     // when all results are in, display the 'complete' box
     var spotifyComplete = function() {
@@ -217,16 +246,20 @@ var moreTracksLikeThis = (function(){
             "110", "19", 
             '9.0.0',
             'javascript/swfobject/expressInstall.swf', 
-            {text: spotifyStr},
+            {text: getSpotifyStr()},
             {quality : "high", allowScriptAccess:"always", wmode:"transparent"},
             {id: "clippy", name: "clippy"}
             );
+
         $('#buildingMsg').hide('slow');
-        
-        $('#results-textarea').val(spotifyStr);
-        $('#dragger').html(spotifyStr);
-        $('#complete').show('slow');
-        //
+
+        $('#results-textarea').val(getSpotifyStr());
+        var draggerContent = getSpotifyStr();
+        // if firefox, use a nice drop-image.  webkit won't allow drag of text if user clicks image first
+        if ($.browser.mozilla) draggerContent = '<img src="tmp_dragger.jpg"/><br/><br/><br/><br/>' + draggerContent;
+        $('#dragger').html(draggerContent);
+        $('#complete').fadeIn('slow');
+
     };
 
 
