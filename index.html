@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>More Tracks Like This - A Spotify Song Recommendation Engine</title>
+    <title>More tracks like this - A Spotify song recommendation engine</title>
     
     <meta charset="utf-8" />
     <meta name="robots" content="index,follow" />
     
     <link type="text/css" rel="stylesheet" href="css/theme.css" />
+    <link rel="shortcut icon" href="images/favicon.ico" />
     
     <!-- Add pretty fonts before body to reduce font pop -->
     <script type="text/javascript" src="http://use.typekit.com/ikd3lyx.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    
     
     <!-- Load jquery, swfobject and our service -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
@@ -23,10 +25,10 @@
     <div id="wrapper">
     
     <!-- Header -->
-    <header>
-        <h1>More <br />tracks <br />like this.com</h1>
+    <header id="mainHeader">
+        <h1>More tracks like this.com</h1>
         
-        <section id="intro" class="font_prater_sans">
+        <section id="intro" class="font_prater_sans round">
             <p><strong>Get more</strong> <em>Spotify</em> <strong>music recommendations</strong>, based on <strong>your favourite tracks</strong>.</p>
             <p>Results are drawn from the listening habits of 40 million active <em>last.fm</em> subscribers.</p> 
         </section>
@@ -52,7 +54,7 @@
     
     <!-- Search -->
     <section class="round tapeBox">
-        <header class="font_prater">Side A. Insert track or Spotify link</header>
+        <header class="tapeTitle font_prater">Side A. Insert track or Spotify link</header>
         <form id="searchForm" class="font_prater_sans">
             <div class="round">
                 <p>
@@ -76,7 +78,7 @@
             </div>
             
             <p id="searchField">
-                <input type="submit" id="search" value="Search" class="font_prater_sans" title="Run DMC" />
+                <input type="image" id="search" value="Search" class="font_prater_sans" title="Run DMC" src="images/search_button.png" />
             </p>
            
         </form>
@@ -87,7 +89,7 @@
     
     <!-- Results -->
     <div id="results" class="round">
-         <header class="font_prater">Side B. Track list</header>
+         <header class="tapeTitle font_prater">Side B. Track list</header>
         <ul id="resultsList">
           
         </ul>
@@ -105,9 +107,11 @@
                     bananas
                 </div>
             </div>
-            <div id="clippy"></div>      
+            <p>Or copy and paste &amp; links below into Spotify</p>
             <textarea id="results-textarea">
             </textarea>
+            
+             <div id="clippy"></div>      
     
             <style>
             #results {
@@ -115,8 +119,10 @@
             }
             
             #dragpic {
-                background:url(http://spotibot.com/_css/img/DRAG_ICON.png);
-                width: 200px;
+                background:url(images/drag_button.png);
+                width: 166px;
+                height: 185px;
+                cursor: pointer;
             }
             #dragger {
                 width: 200px;
@@ -140,12 +146,18 @@
             <a href="http://www.joncreightongriffiths.co.uk/">Jon Griffiths</a> and <a href="http://coderonfire.com/">Andrew Mason</a>.
         </p>
         <p>
-            Built with <a href="http://www.last.fm/api">Last.fm</a>, <a href="http://developer.spotify.com/en/metadata-api/overview/">Spotify</a>, <a href="http://developer.yahoo.com/yql/">YQL</a>, caffeine, beer and little sleep. Licenced under a unicorn loving MIT Licence.
+            Built with <a href="http://www.last.fm/api">Last.fm</a>, <a href="http://developer.spotify.com/en/metadata-api/overview/">Spotify</a>, <a href="http://developer.yahoo.com/yql/">YQL</a>, caffeine, beer and little sleep. Inspired by <a href="http://spotibot.com/">Spotibot</a>.
+        </p>
+        
+        <p>
+        Licenced under a unicorn loving MIT Licence and source available at <a href="http://github.com/hackday-people/moretrackslikethis.com">Github</a>.
         </p>
     </footer>
     
     <!-- Wrapper. End -->
     </div>
+    
+    <div id="tapeEnd"></div>
     
     
   

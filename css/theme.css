@@ -54,7 +54,7 @@ ol, ul {
 --------------------------------------------------------------------------*/
 BODY {
     background-color: #FFF;
-    font-family: arial, verdana, sans-serif;
+    font-family: verdana, arial, sans-serif;
 }
 
 /* Structure
@@ -63,9 +63,6 @@ BODY {
     width: 960px;
     margin: 20px auto;
     background-color: #67b801;
-    -moz-box-shadow: 0 0 20px 0 #666;
-    -webkit-box-shadow: 0 0 20px 0 #666;
-    box-shadow: 0 0 10px 10px #666;
     
     -moz-border-radius: 10px; /* For FireFox */
     -webkit-border-radius: 10px; /* For Safari/Chrome */
@@ -80,30 +77,34 @@ BODY {
 
 /* Header
 --------------------------------------------------------------------------*/
-HEADER {
+#mainHeader {
     display: block;
     overflow: hidden;
     box-shadow: 5px 5px 10px 10px #000;
     position: relative;
+    background: transparent url(../images/logoheader.jpg) 10px 10px no-repeat;
+    height: 290px;
 }
 
 H1 {
-    font-size: 3.5em;
-    color: #000;
-    padding-left: 150px;
-    padding-top: 80px;  
-    float: left;
+    text-indent: -5000px;
+    overflow: hidden;
+
+
  
 }
 
 
 #intro {
-    float: left;
-    width: 300px;
+    float: right;
+    width: 400px;
     font-size: 0.9em;
-    margin-top: 80px;
-    margin-left: 50px;  
+    margin-top: 10px;
+    margin-right: 10px;  
     line-height: 1.4em;
+    font-size: 1em;
+    background-color: #FFF;
+    padding: 0 10px;
 }
 
 #intro P {
@@ -113,11 +114,11 @@ H1 {
 
 #socialLinks {
     background-color: #FFF;
-    position: absolute;
-    bottom: 0;
-    right: 20px;
+clear: right;
     padding: 10px;
     width: 210px;
+    float: right;
+    margin: 10px 10px 0 0;
 }
 
 
@@ -133,9 +134,10 @@ H1 {
     padding: 10px 10px 0 10px;
 }
 
-.tapeBox HEADER {
-    font-size: 2em;
+.tapeTitle {
+    font-size: 1.6em;
     margin-bottom: 10px;
+    margin-left: 5px;
 }
 
 #searchForm {
@@ -161,50 +163,31 @@ H1 {
 #searchForm DIV LABEL,
 #searchForm DIV INPUT
 {
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 #searchForm DIV LABEL {
     float: left;
-    width: 120px;
+    width: 140px;
 }
 
 #searchForm DIV INPUT {
     float: left;
     width: 460px;
-    border: none;
+    
 }
 
 #searchForm INPUT {
     padding: .2em .4em;
-    -moz-border-radius: 10px; /* For FireFox */
-    -webkit-border-radius: 10px; /* For Safari/Chrome */
-    border-radius: 10px; /* For when the standard gets fully supported */
+   
 }
 
-#searchForm INPUT#search {
-    position: absolute;
-    right: 30px;
-    font-size: 2.8em;
-    padding: 0 .9em;
-    cursor: pointer;
-    
-    border: 3px solid #C40;
-    
-    background-image: -webkit-gradient(
-        linear, left bottom,
-        left top,
-        color-stop(0, rgb(255,119,0)),
-        color-stop(1, rgb(255,188,20))
-    );
+#searchForm label {
+    padding-top: 8px;
+    margin-left: 10px;
+}
 
-    background-image:-moz-linear-gradient(
-        center bottom,
-        rgb(255,119,0) 0%,
-        rgb(255,188,20) 100%
-    );
-    
-    height: 190px;
+#searchForm INPUT#search {  
     margin-left: 10px;
 }
 
@@ -303,8 +286,16 @@ H1 {
     display: none;
     margin-right: 10px;
     width: 340px;
-    text-align: center;
+   text-align: center;
     position: relative;
+}
+
+#complete P {
+    margin: 10px 0;
+}
+
+#buildingMsg {
+     text-align: center;
 }
 
 #dragpic {
@@ -344,7 +335,11 @@ FOOTER A:active {
 }
 
 
-
+#tapeEnd {
+    height: 518px;
+    background: transparent url(../images/tapefooter.png) center top no-repeat;
+    margin: -30px 0 0 0;
+}
 
 
 /* Misc.
