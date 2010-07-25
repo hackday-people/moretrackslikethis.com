@@ -256,7 +256,7 @@ var moreTracksLikeThis = (function(){
         $('#results-textarea').val(getSpotifyStr());
         var draggerContent = getSpotifyStr();
         // if firefox, use a nice drop-image.  webkit won't allow drag of text if user clicks image first
-        if ($.browser.mozilla) draggerContent = '<img src="tmp_dragger.jpg"/><br/><br/><br/><br/>' + draggerContent;
+        if ($.browser.mozilla) draggerContent = '<img src="images/drag_button.png" width="166" height="163" /><br/><br/><br/><br/>' + draggerContent;
         $('#dragger').html(draggerContent);
         $('#complete').fadeIn('slow');
 
