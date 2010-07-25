@@ -63,9 +63,6 @@ BODY {
     width: 960px;
     margin: 20px auto;
     background-color: #67b801;
-    -moz-box-shadow: 0 0 20px 0 #666;
-    -webkit-box-shadow: 0 0 20px 0 #666;
-    box-shadow: 0 0 10px 10px #666;
     
     -moz-border-radius: 10px; /* For FireFox */
     -webkit-border-radius: 10px; /* For Safari/Chrome */
@@ -85,7 +82,7 @@ BODY {
     overflow: hidden;
     box-shadow: 5px 5px 10px 10px #000;
     position: relative;
-    background: transparent url(../images/logoheader.jpg) left top no-repeat;
+    background: transparent url(../images/logoheader.jpg) 10px 10px no-repeat;
     height: 290px;
 }
 
@@ -137,8 +134,8 @@ clear: right;
     padding: 10px 10px 0 10px;
 }
 
-.tapeBox HEADER {
-    font-size: 1.5em;
+.tapeTitle {
+    font-size: 1.6em;
     margin-bottom: 10px;
     margin-left: 5px;
 }
