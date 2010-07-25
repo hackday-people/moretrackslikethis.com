@@ -70,6 +70,10 @@ var moreTracksLikeThis = (function(){
             $('#complete').hide();
             $('#results').show();
             $('html,body').animate({scrollTop: $('#results').offset().top}, 900);
+            
+            try {
+                _gaq.push(['_trackEvent', $('#artist').val(), $('#track').val()]);            
+            } catch (e) {}
             return false;
         });
         
