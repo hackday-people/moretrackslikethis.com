@@ -96,7 +96,7 @@ var moreTracksLikeThis = (function(){
         });
         
         // do the weird text-select-drag action
-        $('#dragger').mouseover(function() {
+        var selectDraggerText = function() {
             var div;
             if (document.selection) {
                 div = document.body.createTextRange();
@@ -108,6 +108,14 @@ var moreTracksLikeThis = (function(){
                 div.setEndAfter($("#dragger")[0]) ;
                 window.getSelection().addRange(div);
             }
+        };
+        $('#dragger').mouseover(selectDraggerText);
+        $('#dragger').mousedown(function() {
+            $(this).css({'opacity':'1'});
+            $(this).animate({'opacity':'0'}, 1000);
+        });
+        $('#dragger').mouseleave(function() {
+            $(this).css({'opacity':'0'});
         });
         
         // put the cursor in the track box to get started
@@ -211,7 +219,10 @@ var moreTracksLikeThis = (function(){
             {id: "clippy", name: "clippy"}
             );
         $('#results-textarea').val(spotifyStr);
-        $('#dragger').html(spotifyStr);
+        var draggerContent = spotifyStr;
+        // if firefox, use a nice drop-image.  webkit won't allow drag of text if user clicks image first
+        if ($.browser.mozilla) draggerContent = '<img src="tmp_dragger.jpg"/><br/><br/><br/><br/>' + draggerContent;
+        $('#dragger').html(draggerContent);
         $('#complete').fadeIn('slow');
     };
 
