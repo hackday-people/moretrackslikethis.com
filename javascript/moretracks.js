@@ -171,8 +171,8 @@ var moreTracksLikeThis = (function(){
 
                 var $rowEl = $('<li class="round"></li>');
                 $rowEl.append($('<img src="'+(trackObj.image && trackObj.image[trackObj.image.length-1].content)+ '"/><span class="overlay"></span>'));
-                $rowEl.append(track + '<br />');
-                $rowEl.append(artist + '<br />');
+                $rowEl.append('<strong>' + track + '</strong><br />');
+                $rowEl.append('by <strong>' + artist + '</strong><br />');
 
                 var $spotiLinkEl = $('<span class="link"></span>');
                 $rowEl.append($spotiLinkEl);
@@ -223,7 +223,7 @@ var moreTracksLikeThis = (function(){
             href = data.query.results.tracks.track.href;
             $el.html('<a href="' + href + '">' + href + '</a>');
         } else {
-            $el.html('Couldn\'t find track');
+            $el.html('<strong>Sorry, Spotify doesn&rsquo;t have that track</strong>');
         }
 
         if ( spotifyCountdown<1 ) spotifyComplete();
