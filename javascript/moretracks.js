@@ -65,7 +65,7 @@ var moreTracksLikeThis = (function(){
             
             
             setTimeout(function() {
-                getLastFMSimilarData($('#track').val(), $('#artist').val());
+                getLastFMSimilarData(formatSearchString($('#track').val()), formatSearchString($('#artist').val()));
             }, 1000);
             $('#complete').hide();
             $('#results').show();
@@ -293,6 +293,11 @@ var moreTracksLikeThis = (function(){
         }
     };
     
+    // Strip special characters from search string
+    var formatSearchString = function(string){
+        string = string.replace(/&/g,'').replace(/>/g,'').replace(/</g,'').replace(/"/g,'').replace(/'/g,'');
+        return string;
+    }
     
     // return functions that can be called from the outside world
     // These are used by jsonp callbacks.
